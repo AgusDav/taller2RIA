@@ -1,0 +1,288 @@
+/* Estilos personalizados para BiblioTech */
+
+/* Variables CSS */
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #e67e22;
+  --accent-color: #3498db;
+  --text-color: #2c3e50;
+  --light-bg: #ecf0f1;
+  --warm-beige: #f5f3f0;
+  --book-brown: #8b4513;
+  --gold-accent: #f39c12;
+}
+
+/* Estilos generales */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--warm-beige);
+  color: var(--text-color);
+}
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+}
+
+.z-index-1 {
+  z-index: 1;
+}
+
+/* Book Cards */
+.book-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.book-cover {
+  transition: transform 0.3s ease;
+}
+
+.book-card:hover .book-cover {
+  transform: scale(1.05);
+}
+
+.book-cover-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px 10px 0 0;
+}
+
+/* Featured Book */
+.featured-book {
+  border: none;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Carousel Styles */
+.book-carousel {
+  margin: 0 30px;
+}
+
+.carousel-scroll-container {
+  padding: 10px 5px;
+}
+
+.carousel-btn {
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid var(--accent-color);
+  color: var(--accent-color);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-btn:hover {
+  background: var(--accent-color);
+  color: white;
+  transform: scale(1.1);
+}
+
+/* Search Bar */
+.search-input {
+  border: 2px solid transparent;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+.search-input:focus {
+  background: white;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 20px rgba(52, 152, 219, 0.3);
+}
+
+/* Navigation */
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+/* Loading States */
+.loading-container {
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Cards with glass effect */
+.glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+}
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+  border: none;
+  border-radius: 25px;
+  padding: 10px 25px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+}
+
+.btn-outline-primary {
+  border: 2px solid var(--accent-color);
+  color: var(--accent-color);
+  border-radius: 25px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+  background: var(--accent-color);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 2rem 1rem !important;
+  }
+  
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+  
+  .book-carousel {
+    margin: 0 10px;
+  }
+  
+  .carousel-btn {
+    display: none;
+  }
+}
+
+/* Book shelf styling */
+.bookshelf {
+  background: linear-gradient(to bottom, 
+    var(--book-brown) 0%, 
+    #a0522d 50%, 
+    var(--book-brown) 100%);
+  height: 8px;
+  margin: 20px 0;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Rating stars */
+.rating-stars {
+  color: var(--gold-accent);
+  font-size: 1.1rem;
+}
+
+/* Badges */
+.badge {
+  font-weight: 500;
+  padding: 0.5em 0.8em;
+  border-radius: 20px;
+}
+
+/* Dropdown menus */
+.dropdown-menu {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.dropdown-item {
+  border-radius: 8px;
+  margin: 2px 8px;
+  transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background: var(--accent-color);
+  color: white;
+  transform: translateX(5px);
+}
+
+/* Footer */
+.footer {
+  background: var(--primary-color);
+  color: white;
+  margin-top: auto;
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--light-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}
+
+/* Dark mode support (opcional) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --warm-beige: #1a1a1a;
+    --text-color: #e0e0e0;
+  }
+  
+  body {
+    background-color: var(--warm-beige);
+    color: var(--text-color);
+  }
+  
+  .book-card {
+    background: #2d2d2d;
+    border: 1px solid #404040;
+  }
+}
