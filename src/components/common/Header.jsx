@@ -1,58 +1,47 @@
 import React from 'react';
 import { Navbar, Nav, Container, Badge } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
+import { NavLink } from 'react-router-dom';
 import { useLibrary } from '../../context/LibraryContext';
 
 const Header = () => {
-  const { bookshelves } = useLibrary();
-  
-  // Contar libros en la biblioteca personal
+  const { bookshelves = {} } = useLibrary();
+
   const totalBooks = Object.values(bookshelves).reduce(
-    (total, shelf) => total + shelf.length, 
-    0
+      (total, shelf) => total + shelf.length,
+      0
   );
 
   return (
-    <Navbar bg="dark" variant="dark" expand="lg" className="shadow">
-      <Container>
-        <LinkContainer to="/">
-          <Navbar.Brand className="fw-bold">
+      <Navbar bg="dark" variant="dark" expand="lg" className="shadow">
+        <Container>
+          <Navbar.Brand as={NavLink} to="/" className="fw-bold">
             📚 BiblioTech
           </Navbar.Brand>
-        </LinkContainer>
-        
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <LinkContainer to="/">
-              <Nav.Link>Inicio</Nav.Link>
-            </LinkContainer>
-            
-            <LinkContainer to="/search">
-              <Nav.Link>Explorar</Nav.Link>
-            </LinkContainer>
-            
-            <LinkContainer to="/my-library">
-              <Nav.Link>
+
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link as={NavLink} to="/">Inicio</Nav.Link>
+              <Nav.Link as={NavLink} to="/search">Explorar</Nav.Link>
+              <Nav.Link as={NavLink} to="/my-library">
                 Mi Biblioteca
                 {totalBooks > 0 && (
-                  <Badge bg="secondary" className="ms-2">
-                    {totalBooks}
-                  </Badge>
+                    <Badge bg="secondary" className="ms-2">
+                      {totalBooks}
+                    </Badge>
                 )}
               </Nav.Link>
-            </LinkContainer>
-          </Nav>
-          
-          <Nav>
-            <Nav.Text className="text-light">
+            </Nav>
+
+            {/* 👇 AQUÍ ESTÁ EL CAMBIO 👇 */}
+            <Navbar.Text className="text-light">
               Descubre tu próxima gran lectura
-            </Nav.Text>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+            </Navbar.Text>
+
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
   );
 };
 
