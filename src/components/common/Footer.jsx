@@ -1,95 +1,143 @@
-import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col } from "react-bootstrap"
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="footer bg-dark text-light py-4 mt-5">
+    <footer className="footer bg-dark text-light py-5 mt-5">
       <Container>
-        <Row>
-          <Col md={6}>
-            <h5 className="fw-bold mb-3">📚 BiblioTech</h5>
-            <p className="mb-2">
-              Tu biblioteca digital personal para descubrir, organizar y 
-              disfrutar de la mejor literatura.
-            </p>
-            <p className="text-muted small">
-              Desarrollado con React, Bootstrap y APIs públicas.
-            </p>
+        <Row className="g-4">
+          <Col lg={4} md={6}>
+            <div className="mb-4">
+              <h5 className="fw-bold mb-3 d-flex align-items-center">
+                <span className="me-2" style={{ fontSize: "1.5rem" }}>
+                  📚
+                </span>
+                BiblioTech
+                <span className="ms-2 badge bg-warning text-dark">LIBRARY</span>
+              </h5>
+              <p className="mb-3 text-light-emphasis">
+                Tu biblioteca digital personal para descubrir, organizar y disfrutar de la mejor literatura mundial.
+              </p>
+              <p className="small text-muted mb-0">
+                <span className="me-2">⚡</span>
+                Desarrollado con React, Bootstrap y APIs públicas
+              </p>
+            </div>
           </Col>
-          
-          <Col md={3}>
-            <h6 className="fw-bold mb-3">Enlaces</h6>
+
+          <Col lg={2} md={6}>
+            <h6 className="fw-bold mb-3 text-warning">
+              <span className="me-2">🔗</span>
+              Enlaces
+            </h6>
             <ul className="list-unstyled">
               <li className="mb-2">
-                <a href="/" className="text-light text-decoration-none">
-                  🏠 Inicio
+                <a href="/" className="text-light text-decoration-none d-flex align-items-center hover-lift">
+                  <span className="me-2">🏠</span>
+                  Inicio
                 </a>
               </li>
               <li className="mb-2">
-                <a href="/search" className="text-light text-decoration-none">
-                  🔍 Explorar
+                <a href="/search" className="text-light text-decoration-none d-flex align-items-center hover-lift">
+                  <span className="me-2">🔍</span>
+                  Explorar
                 </a>
               </li>
               <li className="mb-2">
-                <a href="/my-library" className="text-light text-decoration-none">
-                  📖 Mi Biblioteca
+                <a href="/my-library" className="text-light text-decoration-none d-flex align-items-center hover-lift">
+                  <span className="me-2">📖</span>
+                  Mi Biblioteca
                 </a>
               </li>
             </ul>
           </Col>
-          
-          <Col md={3}>
-            <h6 className="fw-bold mb-3">Fuentes de Datos</h6>
+
+          <Col lg={3} md={6}>
+            <h6 className="fw-bold mb-3 text-warning">
+              <span className="me-2">🌐</span>
+              Fuentes de Datos
+            </h6>
             <ul className="list-unstyled">
               <li className="mb-2">
-                <a 
-                  href="https://developers.google.com/books" 
-                  target="_blank" 
+                <a
+                  href="https://developers.google.com/books"
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="text-light text-decoration-none small"
+                  className="text-light text-decoration-none small d-flex align-items-center hover-lift"
                 >
+                  <span className="me-2">📚</span>
                   Google Books API
                 </a>
               </li>
               <li className="mb-2">
-                <a 
-                  href="https://openlibrary.org/developers/api" 
-                  target="_blank" 
+                <a
+                  href="https://openlibrary.org/developers/api"
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="text-light text-decoration-none small"
+                  className="text-light text-decoration-none small d-flex align-items-center hover-lift"
                 >
+                  <span className="me-2">📖</span>
                   Open Library API
                 </a>
               </li>
               <li className="mb-2">
-                <a 
-                  href="https://developer.nytimes.com/docs/books-product/1/overview" 
-                  target="_blank" 
+                <a
+                  href="https://developer.nytimes.com/docs/books-product/1/overview"
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="text-light text-decoration-none small"
+                  className="text-light text-decoration-none small d-flex align-items-center hover-lift"
                 >
+                  <span className="me-2">📰</span>
                   NY Times Books API
                 </a>
               </li>
             </ul>
           </Col>
+
+          <Col lg={3} md={6}>
+            <h6 className="fw-bold mb-3 text-warning">
+              <span className="me-2">📊</span>
+              Estadísticas
+            </h6>
+            <div className="small text-light-emphasis">
+              <div className="d-flex justify-content-between mb-2">
+                <span>📚 Libros disponibles:</span>
+                <span className="fw-bold text-warning">Miles</span>
+              </div>
+              <div className="d-flex justify-content-between mb-2">
+                <span>🌍 Idiomas:</span>
+                <span className="fw-bold text-warning">Múltiples</span>
+              </div>
+              <div className="d-flex justify-content-between mb-2">
+                <span>🏷️ Categorías:</span>
+                <span className="fw-bold text-warning">Todas</span>
+              </div>
+              <div className="d-flex justify-content-between">
+                <span>⚡ Actualizaciones:</span>
+                <span className="fw-bold text-warning">Diarias</span>
+              </div>
+            </div>
+          </Col>
         </Row>
-        
-        <hr className="my-4" />
-        
-        <Row>
-          <Col className="text-center">
+
+        <hr className="my-4 border-secondary" />
+
+        <Row className="align-items-center">
+          <Col md={6}>
+            <p className="mb-0 text-muted">© {currentYear} BiblioTech - Laboratorio RIA 2025</p>
+          </Col>
+          <Col md={6} className="text-md-end">
             <p className="mb-0 text-muted">
-              © {currentYear} BiblioTech - Laboratorio RIA 2025. 
-              Hecho con ❤️ para amantes de los libros.
+              <span className="me-2">❤️</span>
+              Hecho con amor para amantes de los libros
+              <span className="ms-2">📚✨</span>
             </p>
           </Col>
         </Row>
       </Container>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer
