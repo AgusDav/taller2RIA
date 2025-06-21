@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button, Alert, Form } from 'react-bootstrap';
 import { useSearchParams } from 'react-router-dom';
 import BookCard from '../components/books/BookCard';
-import FilterPanel from '../components/search/FilterPanel';
+import FilterPanel from '../components/search/filterPanel';
 import SearchBar from '../components/search/SearchBar';
 import LoadingSpinner, { BookLoadingSpinner } from '../components/common/LoadingSpinner';
 import { useBooks } from '../hooks/useBooks';
