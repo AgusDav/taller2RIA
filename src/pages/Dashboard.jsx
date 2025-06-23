@@ -298,7 +298,7 @@ const Dashboard = () => {
                 <span style={{ fontSize: "4rem" }}>🎯</span>
               </div>
               <h4 className="fw-bold mb-3">¿No encuentras lo que buscas?</h4>
-              <p className="lead text-muted mb-4">
+              <p className="lead text-white mb-4">
                 Utiliza nuestra búsqueda avanzada para encontrar libros específicos por autor, género, año o palabras
                 clave. ¡Tu libro perfecto te está esperando!
               </p>
@@ -327,7 +327,7 @@ const Dashboard = () => {
           <Row className="g-3">
             {[
               { name: "Ficción", icon: "📚", category: "fiction", color: "primary" },
-              { name: "Misterio", icon: "🔍", category: "mystery", color: "dark" },
+              { name: "Misterio", icon: "🔍", category: "mystery", color: "light" },
               { name: "Romance", icon: "💕", category: "romance", color: "danger" },
               { name: "Ciencia Ficción", icon: "🚀", category: "science fiction", color: "info" },
               { name: "Biografía", icon: "👤", category: "biography", color: "warning" },

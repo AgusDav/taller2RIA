@@ -15,9 +15,6 @@ const Header = () => {
             📚
           </span>
           BiblioTech
-          <span className="ms-2 text-warning" style={{ fontSize: "0.8rem" }}>
-            LIBRARY
-          </span>
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

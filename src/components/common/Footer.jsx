@@ -16,10 +16,10 @@ const Footer = () => {
                 BiblioTech
                 <span className="ms-2 badge bg-warning text-dark">LIBRARY</span>
               </h5>
-              <p className="mb-3 text-light-emphasis">
+              <p className="mb-3 text-white-emphasis">
                 Tu biblioteca digital personal para descubrir, organizar y disfrutar de la mejor literatura mundial.
               </p>
-              <p className="small text-muted mb-0">
+              <p className="small text-white mb-0">
                 <span className="me-2">⚡</span>
                 Desarrollado con React, Bootstrap y APIs públicas
               </p>
@@ -70,28 +70,6 @@ const Footer = () => {
                   Google Books API
                 </a>
               </li>
-              <li className="mb-2">
-                <a
-                  href="https://openlibrary.org/developers/api"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-light text-decoration-none small d-flex align-items-center hover-lift"
-                >
-                  <span className="me-2">📖</span>
-                  Open Library API
-                </a>
-              </li>
-              <li className="mb-2">
-                <a
-                  href="https://developer.nytimes.com/docs/books-product/1/overview"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-light text-decoration-none small d-flex align-items-center hover-lift"
-                >
-                  <span className="me-2">📰</span>
-                  NY Times Books API
-                </a>
-              </li>
             </ul>
           </Col>
 
@@ -100,7 +78,7 @@ const Footer = () => {
               <span className="me-2">📊</span>
               Estadísticas
             </h6>
-            <div className="small text-light-emphasis">
+            <div className="small text-white-emphasis">
               <div className="d-flex justify-content-between mb-2">
                 <span>📚 Libros disponibles:</span>
                 <span className="fw-bold text-warning">Miles</span>
@@ -126,13 +104,6 @@ const Footer = () => {
         <Row className="align-items-center">
           <Col md={6}>
             <p className="mb-0 text-muted">© {currentYear} BiblioTech - Laboratorio RIA 2025</p>
-          </Col>
-          <Col md={6} className="text-md-end">
-            <p className="mb-0 text-muted">
-              <span className="me-2">❤️</span>
-              Hecho con amor para amantes de los libros
-              <span className="ms-2">📚✨</span>
-            </p>
           </Col>
         </Row>
       </Container>

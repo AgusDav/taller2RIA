@@ -103,7 +103,7 @@ const BookCard = ({ book, showShelfActions = true }) => {
         <Card.Title className="fw-bold mb-2" style={{ fontSize: '1rem' }}>
           <Link 
             to={`/book/${id}`} 
-            className="text-decoration-none text-dark"
+            className="text-decoration-none text-white"
             title={title}
           >
             {truncateText(title, 60)}
@@ -119,14 +119,14 @@ const BookCard = ({ book, showShelfActions = true }) => {
         <div className="d-flex justify-content-between align-items-center mb-2">
           {averageRating > 0 ? (
             <div className="d-flex align-items-center">
-              <span className="text-warning me-1">⭐</span>
-              <small>
+              <span className="text-white me-1">⭐</span>
+              <small className="text-white">
                 {averageRating.toFixed(1)} 
                 {ratingsCount > 0 && ` (${ratingsCount})`}
               </small>
             </div>
           ) : (
-            <small className="text-muted">Sin rating</small>
+            <small className="text-white">Sin rating</small>
           )}
           
           <Badge bg="secondary">{getYear(publishedDate)}</Badge>

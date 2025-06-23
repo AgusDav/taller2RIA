@@ -124,7 +124,7 @@ const SearchBar = ({
 
       {/* Dropdown de sugerencias */}
       {showDropdown && suggestions.length > 0 && (
-        <Card className="position-absolute w-100 mt-1 shadow-lg" style={{ zIndex: 1050 }}>
+        <Card className="position-absolute w-100 mt-1 shadow-lg" style={{ zIndex: 1050, backgroundColor: 'var(--warm-beige)' }}>
           <ListGroup variant="flush">
             {suggestions.map((suggestion, index) => (
               <ListGroup.Item
@@ -132,7 +132,12 @@ const SearchBar = ({
                 action
                 onClick={() => handleSuggestionClick(suggestion)}
                 className="d-flex align-items-center py-2"
-                style={{ cursor: 'pointer' }}
+                style={{ 
+                  cursor: 'pointer',
+                  backgroundColor: 'var(--warm-beige)',  // ← Mismo color
+                  color: 'var(--text-color)',            // ← Mismo color de texto
+                  borderColor: '#e2e8f0'                 // ← Borde sutil
+                }}
               >
                 <span className="me-2">
                   {searchHistory.includes(suggestion) ? '🕒' : '🔍'}
