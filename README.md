@@ -195,8 +195,8 @@ El estado y errores se manejan con el hook `useBooks`.
 
 1. Clonar el repositorio
    ```bash
-   git clone https://github.com/tu-usuario/biblioteca-moderna.git
-   cd biblioteca-moderna
+   git clone https://github.com/AgusDav/taller2RIA.git
+   cd taller2RIA
    ```
 2. Instalar dependencias
    ```bash
