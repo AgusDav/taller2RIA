@@ -1,129 +1,85 @@
-import React, { useRef } from 'react';
-import { Button, Row, Col } from 'react-bootstrap';
+import React, { useRef, useState, useEffect } from 'react';
+import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import BookCard from './BookCard';
 
-const BookCarousel = ({ books, title }) => {
-  const scrollContainerRef = useRef(null);
+// 1. Añadimos 'subtitle' a la lista de props
+const BookCarousel = ({ books, title, subtitle, icon, viewAllLink }) => {
+    const scrollContainerRef = useRef(null);
+    const [isAtStart, setIsAtStart] = useState(true);
+    const [isAtEnd, setIsAtEnd] = useState(false);
 
-  const scrollLeft = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({
-        left: -300,
-        behavior: 'smooth'
-      });
+    useEffect(() => {
+        const container = scrollContainerRef.current;
+        const checkScrollPosition = () => {
+            if (container) {
+                const { scrollLeft, scrollWidth, clientWidth } = container;
+                setIsAtEnd(scrollLeft + clientWidth >= scrollWidth - 1);
+                setIsAtStart(scrollLeft === 0);
+            }
+        };
+        if (container) {
+            checkScrollPosition();
+            container.addEventListener('scroll', checkScrollPosition);
+            return () => container.removeEventListener('scroll', checkScrollPosition);
+        }
+    }, [books]);
+
+    const scroll = (scrollOffset) => {
+        if (scrollContainerRef.current) {
+            scrollContainerRef.current.scrollBy({ left: scrollOffset, behavior: 'smooth' });
+        }
+    };
+
+    if (!books || books.length === 0) {
+        return null;
     }
-  };
 
-  const scrollRight = () => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({
-        left: 300,
-        behavior: 'smooth'
-      });
-    }
-  };
+    return (
+        <div className="book-carousel">
+            <div className="carousel-header">
+                <div className="carousel-title-container">
+                    {icon && <span className="carousel-icon">{icon}</span>}
+                    {/* 2. Envolvemos el título y el nuevo subtítulo en un div para agruparlos verticalmente */}
+                    <div>
+                        {title && <h4 className="carousel-title">{title}</h4>}
+                        {subtitle && <p className="carousel-subtitle">{subtitle}</p>}
+                    </div>
+                </div>
+                {viewAllLink && (
+                    <Link to={viewAllLink} className="btn btn-sm view-all-btn">
+                        Ver todos
+                    </Link>
+                )}
+            </div>
 
-  if (!books || books.length === 0) {
-    return null;
-  }
-
-  return (
-    <div className="book-carousel position-relative">
-      {title && (
-        <h4 className="mb-3 fw-bold">{title}</h4>
-      )}
-      
-      {/* Botones de navegación */}
-      <Button
-        variant="outline-primary"
-        className="carousel-btn carousel-btn-left position-absolute start-0 top-50 translate-middle-y"
-        onClick={scrollLeft}
-        style={{ 
-          zIndex: 10,
-          borderRadius: '50%',
-          width: '40px',
-          height: '40px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}
-      >
-        ←
-      </Button>
-
-      <Button
-        variant="outline-primary"
-        className="carousel-btn carousel-btn-right position-absolute end-0 top-50 translate-middle-y"
-        onClick={scrollRight}
-        style={{ 
-          zIndex: 10,
-          borderRadius: '50%',
-          width: '40px',
-          height: '40px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}
-      >
-        →
-      </Button>
-
-      {/* Container scrolleable */}
-      <div
-        ref={scrollContainerRef}
-        className="carousel-scroll-container"
-        style={{
-          display: 'flex',
-          overflowX: 'auto',
-          overflowY: 'hidden',
-          scrollBehavior: 'smooth',
-          gap: '1rem',
-          padding: '1rem 0',
-          scrollbarWidth: 'none', // Firefox
-          msOverflowStyle: 'none', // IE and Edge
-        }}
-      >
-        {books.map((book, index) => (
-          <div
-            key={`${book.id}-${index}`}
-            className="carousel-item"
-            style={{
-              minWidth: '250px',
-              maxWidth: '250px',
-              flexShrink: 0
-            }}
-          >
-            <BookCard book={book} showShelfActions={true} />
-          </div>
-        ))}
-      </div>
-
-      <style jsx>{`
-        .carousel-scroll-container::-webkit-scrollbar {
-          display: none;
-        }
-        
-        .carousel-btn {
-          opacity: 0.8;
-          transition: opacity 0.3s ease;
-        }
-        
-        .carousel-btn:hover {
-          opacity: 1;
-        }
-        
-        .book-carousel:hover .carousel-btn {
-          opacity: 1;
-        }
-        
-        @media (max-width: 768px) {
-          .carousel-btn {
-            display: none;
-          }
-        }
-      `}</style>
-    </div>
-  );
+            <div className="carousel-body">
+                <Button
+                    className="carousel-btn carousel-btn-left"
+                    onClick={() => scroll(-350)}
+                    disabled={isAtStart}
+                    aria-label="Desplazar a la izquierda"
+                >
+                    ←
+                </Button>
+                <Button
+                    className="carousel-btn carousel-btn-right"
+                    onClick={() => scroll(350)}
+                    disabled={isAtEnd}
+                    aria-label="Desplazar a la derecha"
+                >
+                    →
+                </Button>
+                <div ref={scrollContainerRef} className="carousel-scroll-container">
+                    {books.map((book, index) => (
+                        <div key={`${book.id}-${index}`} className="carousel-item-wrapper">
+                            <BookCard book={book} showShelfActions={true} />
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
 };
 
 export default BookCarousel;

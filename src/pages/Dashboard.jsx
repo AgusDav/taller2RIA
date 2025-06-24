@@ -55,8 +55,8 @@ const Dashboard = () => {
             <Spinner animation="border" role="status" className="mb-3" style={{ width: "3rem", height: "3rem" }}>
               <span className="visually-hidden">Cargando...</span>
             </Spinner>
-            <h4 className="text-muted">Preparando tu biblioteca...</h4>
-            <p className="text-muted">Cargando los mejores libros para ti</p>
+            <h4 className="text-white">Preparando tu biblioteca...</h4>
+            <p className="text-white">Cargando los mejores libros para ti</p>
           </div>
         </div>
       </Container>
@@ -227,7 +227,7 @@ const Dashboard = () => {
                   <span className="me-2">📈</span>
                   Libros Populares
                 </h3>
-                <p className="text-muted mb-0">Los más leídos y recomendados</p>
+                <p className="text-white mb-0">Los más leídos y recomendados</p>
               </div>
               <Button as={Link} to="/search?filter=popular" variant="outline-primary" size="sm" className="hover-lift">
                 <span className="me-2">👀</span>
@@ -249,7 +249,7 @@ const Dashboard = () => {
                   <span className="me-2">🆕</span>
                   Lanzamientos Recientes
                 </h3>
-                <p className="text-muted mb-0">Las últimas novedades literarias</p>
+                <p className="text-white mb-0">Las últimas novedades literarias</p>
               </div>
               <Button as={Link} to="/search?filter=recent" variant="outline-primary" size="sm" className="hover-lift">
                 <span className="me-2">🔥</span>
@@ -271,7 +271,7 @@ const Dashboard = () => {
                   <span className="me-2">📖</span>
                   Ficción Destacada
                 </h3>
-                <p className="text-muted mb-0">Sumérgete en mundos imaginarios</p>
+                <p className="text-white mb-0">Sumérgete en mundos imaginarios</p>
               </div>
               <Button
                 as={Link}

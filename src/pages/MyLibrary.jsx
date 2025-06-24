@@ -120,7 +120,7 @@ const MyLibrary = () => {
             <span style={{ fontSize: '5rem' }}>📚</span>
           </div>
           <h2 className="fw-bold mb-3">¡Bienvenido a tu biblioteca personal!</h2>
-          <p className="lead text-muted mb-4">
+          <p className="lead text-white mb-4">
             Comienza a construir tu colección de libros favoritos. 
             Organiza tus lecturas en estantes virtuales y lleva un registro de tu progreso.
           </p>
@@ -206,28 +206,28 @@ const MyLibrary = () => {
                     <div className="stat-number text-primary fw-bold fs-3">
                       {stats.totalBooks}
                     </div>
-                    <div className="stat-label text-muted small">Total de libros</div>
+                    <div className="stat-label text-white small">Total de libros</div>
                   </div>
                   
                   <div className="stat-item text-center">
                     <div className="stat-number text-success fw-bold fs-4">
                       {stats.read}
                     </div>
-                    <div className="stat-label text-muted small">Leídos</div>
+                    <div className="stat-label text-white small">Leídos</div>
                   </div>
                   
                   <div className="stat-item text-center">
                     <div className="stat-number text-warning fw-bold fs-4">
                       {stats.reading}
                     </div>
-                    <div className="stat-label text-muted small">Leyendo</div>
+                    <div className="stat-label text-white small">Leyendo</div>
                   </div>
                   
                   <div className="stat-item text-center">
                     <div className="stat-number text-info fw-bold fs-4">
                       {stats.toRead}
                     </div>
-                    <div className="stat-label text-muted small">Por leer</div>
+                    <div className="stat-label text-white small">Por leer</div>
                   </div>
                 </div>
 
@@ -236,7 +236,7 @@ const MyLibrary = () => {
                 {/* Progreso de lectura */}
                 <div className="mb-3">
                   <div className="d-flex justify-content-between mb-1">
-                    <small className="fw-bold">Progreso de lectura</small>
+                    <small className="fw-bold text-white">Progreso de lectura</small>
                     <small>{getReadingProgress()}%</small>
                   </div>
                   <ProgressBar 
@@ -247,7 +247,7 @@ const MyLibrary = () => {
                 </div>
 
                 {/* Estadísticas adicionales */}
-                <div className="small text-muted">
+                <div className="small text-white">
                   <div className="d-flex justify-content-between mb-1">
                     <span>📄 Total páginas:</span>
                     <span className="fw-bold">{stats.totalPages.toLocaleString()}</span>
@@ -268,7 +268,7 @@ const MyLibrary = () => {
 
             {/* Géneros favoritos */}
             {getGenreStats().length > 0 && (
-              <Card className="shadow-sm mb-4">
+              <Card className="shadow-sm mb-4 text-white">
                 <Card.Header>
                   <h6 className="mb-0 fw-bold">🏷️ Géneros favoritos</h6>
                 </Card.Header>
@@ -343,7 +343,7 @@ const MyLibrary = () => {
                             ''
                           )
                         ) : (
-                          <p className="text-muted">No tienes libros marcados como "leyendo"</p>
+                          <p className="text-white">No tienes libros marcados como "leyendo"</p>
                         )}
                         {stats.reading > 3 && (
                           <Button 
@@ -371,7 +371,7 @@ const MyLibrary = () => {
                             ''
                           )
                         ) : (
-                          <p className="text-muted">No tienes libros favoritos aún</p>
+                          <p className="text-white">No tienes libros favoritos aún</p>
                         )}
                         {stats.favorites > 3 && (
                           <Button 

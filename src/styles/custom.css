@@ -456,44 +456,155 @@ main {
   font-style: italic;
 }
 
-/* ====== Carousel ====== */
+/* ====== Book Carousel (Enhanced) ====== */
 .book-carousel {
-  margin: 0 2rem;
+  margin-bottom: 3rem; /* Espacio entre carruseles */
+}
+
+.carousel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  /* El padding alinea el título con el contenido visible del carrusel */
+  padding: 0 55px;
+}
+
+.carousel-title-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* Espacio entre icono y título */
+}
+
+.carousel-icon {
+  font-size: 1.5rem;
+  /* Usamos un color de texto secundario para el icono, como en la UI */
+  color: var(--text-muted);
+}
+
+.carousel-title {
+  margin: 0;
+  font-size: 1.5rem; /* Ajustado al h4 */
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.view-all-btn {
+  /* Estilo para el botón "Ver todos" que coincide con la UI */
+  background-color: var(--bg-accent);
+  color: var(--text-secondary);
+  border: 1px solid var(--text-muted);
+  padding: 0.4rem 1rem !important;
+  font-size: 0.8rem !important;
+  font-weight: 500 !important;
+  border-radius: var(--radius-xl) !important; /* Estilo píldora */
+  transition: var(--transition-fast) !important;
+  text-decoration: none !important;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.view-all-btn:hover {
+  background-color: var(--secondary-color);
+  color: var(--bg-primary); /* Texto oscuro/blanco sobre fondo dorado */
+  border-color: var(--secondary-color);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.carousel-body {
   position: relative;
 }
 
 .carousel-scroll-container {
-  padding: 1rem 0.5rem;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  gap: 1.5rem;
+  /* Padding para que los botones de navegación no tapen los libros */
+  padding: 1rem 55px;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE y Edge */
 }
 
 .carousel-scroll-container::-webkit-scrollbar {
-  display: none;
+  display: none; /* Chrome, Safari y Opera */
 }
 
+.carousel-item-wrapper {
+  min-width: 220px;
+  max-width: 220px;
+  flex-shrink: 0;
+}
+
+/* Botones de navegación del carrusel */
 .carousel-btn {
-  background: rgba(255, 255, 255, 0.95) !important;
-  border: 3px solid var(--secondary-color) !important;
-  color: var(--secondary-color) !important;
-  backdrop-filter: blur(10px);
-  box-shadow: var(--shadow-md);
-  width: 50px !important;
-  height: 50px !important;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 45px !important;
+  height: 45px !important;
   border-radius: 50% !important;
+  /* Estilo oscuro y sutil que coincide con la UI */
+  background: var(--bg-accent) !important;
+  border: 1px solid var(--text-muted) !important;
+  color: var(--text-secondary) !important;
+  opacity: 0; /* Oculto por defecto */
+  transition: all var(--transition-fast) !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  font-size: 1.2rem !important;
-  font-weight: bold !important;
-  transition: var(--transition-fast) !important;
+  font-size: 1.5rem !important;
+  padding: 0 !important;
+}
+
+/* Mostrar botones al pasar el ratón por encima del cuerpo del carrusel */
+.carousel-body:hover .carousel-btn {
+  opacity: 0.8;
 }
 
 .carousel-btn:hover {
+  opacity: 1;
+  /* Efecto hover vibrante usando colores del tema */
   background: var(--secondary-color) !important;
-  color: var(--text-light) !important;
-  transform: scale(1.15);
+  color: var(--bg-primary) !important;
+  border-color: var(--secondary-color) !important;
+  transform: translateY(-50%) scale(1.1); /* Efecto de crecimiento y mantener centrado */
   box-shadow: var(--shadow-lg);
+}
+
+/* Ocultar completamente los botones cuando están deshabilitados */
+.carousel-btn:disabled {
+  opacity: 0 !important;
+  cursor: default;
+  transform: translateY(-50%) scale(0.8); /* Efecto de encogimiento al desaparecer */
+}
+
+.carousel-btn-left {
+  left: 5px;
+}
+
+.carousel-btn-right {
+  right: 5px;
+}
+
+/* La regla para ocultar en móviles ya existe en tu sección de responsive,
+   por lo que no es necesario repetirla aquí. */
+@media (max-width: 768px) {
+  .carousel-header,
+  .carousel-scroll-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+.carousel-subtitle {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 400;
 }
 
 /* ====== Badges ====== */

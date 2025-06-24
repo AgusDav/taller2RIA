@@ -21,7 +21,7 @@ const LoadingSpinner = ({
       
       {message && (
         <div className="loading-message">
-          <p className="text-muted mb-0">{message}</p>
+          <p className="text-white mb-0">{message}</p>
           <div className="loading-dots mt-2">
             <span className="dot"></span>
             <span className="dot"></span>

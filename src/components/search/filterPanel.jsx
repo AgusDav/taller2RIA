@@ -81,8 +81,8 @@ const FilterPanel = ({ filters, onFilterChange, onClear }) => {
   const selectYearRange = (range) => {
     const newFilters = {
       ...localFilters,
-      publishedAfter: range.after.toString(),
-      publishedBefore: range.before.toString()
+      publishedAfter: range.after ? range.after.toString() : '',
+      publishedBefore: range.before ? range.before.toString() : ''
     };
     setLocalFilters(newFilters);
     onFilterChange(newFilters);
@@ -287,7 +287,7 @@ const FilterPanel = ({ filters, onFilterChange, onClear }) => {
         {/* Resumen de filtros activos */}
         {activeFiltersCount > 0 && (
           <div className="mt-3 pt-3 border-top">
-            <small className="text-muted fw-bold">Filtros activos:</small>
+            <small className="text-white fw-bold">Filtros activos:</small>
             <div className="mt-2">
               {localFilters.query && (
                 <Badge bg="primary" className="me-1 mb-1">

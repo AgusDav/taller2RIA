@@ -299,17 +299,17 @@ const BookDetails = () => {
 
               {/* Información rápida */}
               <div className="border-top pt-3">
-                <small className="text-muted d-block mb-1">
+                <small className="text-white d-block mb-1">
                   📄 {pageCount || 'N/A'} páginas
                 </small>
-                <small className="text-muted d-block mb-1">
+                <small className="text-white d-block mb-1">
                   ⏱️ {getReadingTime(pageCount)}
                 </small>
-                <small className="text-muted d-block mb-1">
+                <small className="text-white d-block mb-1">
                   🌍 {language ? language.toUpperCase() : 'N/A'}
                 </small>
                 {isbn && (
-                  <small className="text-muted d-block">
+                  <small className="text-white d-block">
                     📋 ISBN: {isbn}
                   </small>
                 )}
@@ -322,7 +322,7 @@ const BookDetails = () => {
         <Col lg={8}>
           <div className="mb-4">
             <h1 className="display-6 fw-bold">{title}</h1>
-            <p className="lead text-muted">
+            <p className="lead text-white">
               Por: {authors.join(', ')}
             </p>
 
@@ -333,7 +333,7 @@ const BookDetails = () => {
                   <span className="text-warning me-2">⭐⭐⭐⭐⭐</span>
                   <span className="fw-bold">{averageRating.toFixed(1)}</span>
                   {ratingsCount > 0 && (
-                    <span className="text-muted ms-1">({ratingsCount} reseñas)</span>
+                    <span className="text-white ms-1">({ratingsCount} reseñas)</span>
                   )}
                 </div>
               )}

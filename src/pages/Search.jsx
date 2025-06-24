@@ -40,7 +40,7 @@ const Search = () => {
 
   // Ejecutar búsqueda cuando cambien los filtros
   useEffect(() => {
-    if (filters.query || filters.category || filters.author) {
+  if (filters.query || filters.category || filters.author || filters.language || filters.publishedAfter || filters.publishedBefore) {
       performSearch();
     }
   }, [filters, sortBy, currentPage]);
@@ -62,8 +62,8 @@ const Search = () => {
   const performSearch = async () => {
     try {
       let searchQuery = '';
-      
-      // Construir query de búsqueda
+    
+      // Construir query de búsqueda básica
       if (filters.query) {
         searchQuery = filters.query;
       }
@@ -76,13 +76,30 @@ const Search = () => {
         searchQuery += (searchQuery ? ' ' : '') + `subject:"${filters.category}"`;
       }
 
+      if (filters.publishedAfter || filters.publishedBefore) {
+      const dateQuery = buildDateQuery(filters.publishedAfter, filters.publishedBefore);
+      if (dateQuery) {
+        searchQuery += (searchQuery ? ' ' : '') + dateQuery;
+      }
+    }
+
+      // IMPORTANTE: Si solo hay filtros de idioma/fecha sin texto, usar término básico
+      if (!searchQuery && (filters.language || filters.publishedAfter || filters.publishedBefore)) {
+        searchQuery = '*'; // Usar * para búsqueda amplia
+      }
+
+      // Si no hay ningún filtro, no hacer búsqueda
+      if (!searchQuery) {
+        return;
+      }
+
       const startIndex = (currentPage - 1) * booksPerPage;
       
       await searchBooks(searchQuery, {
         startIndex,
         maxResults: booksPerPage,
         orderBy: sortBy,
-        langRestrict: filters.language || null
+        langRestrict: (filters.language && filters.language !== 'en') ? filters.language : null
       });
 
       // Agregar al historial si es una búsqueda por query
@@ -166,18 +183,6 @@ const Search = () => {
             
             <Col md={6}>
               <div className="d-flex justify-content-end align-items-center gap-3">
-                {/* Selector de ordenamiento */}
-                <Form.Select
-                  size="sm"
-                  value={sortBy}
-                  onChange={(e) => handleSortChange(e.target.value)}
-                  style={{ width: 'auto' }}
-                >
-                  <option value="relevance">Relevancia</option>
-                  <option value="newest">Más nuevos</option>
-                  <option value="title">Título A-Z</option>
-                </Form.Select>
-
                 {/* Selector de vista */}
                 <div className="btn-group" role="group">
                   <Button
